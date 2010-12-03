@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.javaserv.docbook</groupId>
   <artifactId>docbookv</artifactId>
-  <version>0.0.1</version>
+  <version>0.3.0</version>
   <name>docbookv</name>
-  <description>Validation as console-tool. M 0.2 "Filename as parameter and optional the type against it shall be validated"</description>
+  <description>Validation as console-tool.</description>
   <build>
 		<plugins>
 			<plugin>
@@ -20,5 +20,12 @@
 			</plugin>
 		</plugins>
 	</build>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.json</groupId>
+  		<artifactId>json</artifactId>
+  		<version>20080701</version>
+  	</dependency>
+  </dependencies>
   
 </project>
