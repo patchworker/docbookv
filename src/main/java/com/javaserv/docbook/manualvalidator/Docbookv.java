@@ -7,7 +7,7 @@ package com.javaserv.docbook.manualvalidator;
  */
 public class Docbookv {
 	static public String VERSION = "0.2.8";
-	static public String VERSION_DESCRIPTION = "Result in JSON-format with parameter --json, dokumentation refactoring and extended for parameters help und --json";
+	static public String VERSION_DESCRIPTION = "0.3.0 next milestone: Result in JSON-format with parameter --json, dokumentation refactoring and extended for parameters help und --json";
 
 	public static void main(String[] args){
 		Controller userInfo = new Controller(args);
