@@ -20,8 +20,8 @@ public class JsonResponse {
 	}
 	
 	public String render(JobData jobData) {
-		content = new JSONStringer();
 		try {
+			content = new JSONStringer();
 			content.object();
 			
 			add(HEADER, jobData);
