@@ -11,10 +11,16 @@ public class Controller {
 		JobData jobData = parseArguments(args);
 		
 		if (!jobData.isJsonMode()) {
-			VerboseInfo printInfo = new VerboseInfo(jobData);
-		} else {
-			System.out.println("json output");
+			//VerboseInfo printInfo = new VerboseInfo(jobData);
+			//return;
 		}
+		JsonResponse renderer = new JsonResponse();
+		String output = renderer.render(jobData);
+		if(output != null && output.length() > 0) {
+			System.out.print(output);
+			return;
+		}
+		System.out.println("{'ERROR':'the JSON library is not available'}");
 	}
 	
 	public JobData parseArguments(String[] args) {
