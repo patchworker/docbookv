@@ -1,18 +1,19 @@
 package com.javaserv.docbook.manualvalidator;
 
 /**
- * DocBook versions: http://www.oasis-open.org/docbook/xml/
+ * This can be called from the console (Docbookv.java main), a Swing app or by a webservice)
+ * 
  * @author Daniel Bruessler <mail@danielbruessler.de>
  * @since 0.3.0
  */
 public class Controller {
 
-	public Controller(String[] args) {
+	public Controller(String[] args, boolean isJsonMode) {
 		JobData jobData = parseArguments(args);
 		
-		if (!jobData.isJsonMode()) {
-			//VerboseInfo printInfo = new VerboseInfo(jobData);
-			//return;
+		if (isJsonMode || !jobData.isJsonMode()) {
+			VerboseInfo printInfo = new VerboseInfo(jobData);
+			return;
 		}
 		JsonResponse renderer = new JsonResponse();
 		String output = renderer.render(jobData);

@@ -72,7 +72,7 @@ public class JsonResponse {
 				String debugInfo = "DocBook manual"
 					  + jobData.getManualFilename();
 				if (jobData.getValidateType().length() > 0) {
-					debugInfo += "Validate type:  " + jobData.getValidateType();
+					debugInfo += LF + "Validate type:  " + jobData.getValidateType();
 				}
 				content.key("debug-info").value(debugInfo);
 				break;
