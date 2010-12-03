@@ -24,23 +24,23 @@ public class JsonResponse {
 		try {
 			content.object();
 			
-			printHelpText(HEADER, jobData);
+			add(HEADER, jobData);
 			if(jobData == null) {
 				content.endObject();
 				return content.toString();
 			}
 			if(jobData.getError() == 0) {
-				printHelpText(FILES_INFO, jobData);
+				add(FILES_INFO, jobData);
 				content.endObject();
 				return content.toString();
 			}
 			else if(jobData.getError() == JobData.HELP) {
-				printHelpText(JobData.HELP, jobData);
+				add(JobData.HELP, jobData);
 				content.endObject();
 				return content.toString();
 			}
-			printHelpText(jobData.getError(), jobData);
-			printHelpText(JobData.HELP, jobData);
+			add(jobData.getError(), jobData);
+			add(JobData.HELP, jobData);
 			
 			content.endObject();
 			return content.toString();
@@ -58,7 +58,7 @@ public class JsonResponse {
 	 * @param args
 	 * @throws JSONException 
 	 */
-	public void printHelpText(int mode, JobData jobData) throws JSONException {
+	public void add(int mode, JobData jobData) throws JSONException {
 		switch (mode) {
 			case HEADER: {
 				content.key("version").value(Docbookv.VERSION);
