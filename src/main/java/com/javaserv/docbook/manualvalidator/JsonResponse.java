@@ -85,7 +85,7 @@ public class JsonResponse {
 			default: {
 				StringBuffer help = new StringBuffer();
 				String command = jobData.getCommand();
-				if(command == null || command.length() == 0) command = "docbookv.sh/docbook.bat";
+				if(command == null || command.length() == 0) command = "docbookv";
 				help.append("usage examples: " + LF);
 				help.append(command + " help" + LF);
 				help.append(command + " manual.xml" + LF);
