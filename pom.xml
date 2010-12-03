@@ -4,7 +4,8 @@
   <artifactId>docbookv</artifactId>
   <version>0.0.1</version>
   <name>docbookv</name>
-  <description>Validation as console-tool</description>	<build>
+  <description>Validation as console-tool. M 0.2 "Filename as parameter and optional the type against it shall be validated"</description>
+  <build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -12,8 +13,6 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mode>development</mode>
-							<url>http://www.javaserv.com</url>
 							<mainClass>com.javaserv.docbook.manualvalidator.Docbookv</mainClass>
 						</manifest>
 					</archive>
