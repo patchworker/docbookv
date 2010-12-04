@@ -20,9 +20,9 @@ import org.xml.sax.helpers.DefaultHandler;
 @SuppressWarnings("unused")
 public class DtdValidator {
 	
-	public String validate(String xmlFile) {
+	public String validate(String xmlFileName) {
 		try {
-	      	 File x = new File(xmlFile);
+	      	 File x = new File(xmlFileName);
 	         DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
 	         f.setValidating(true); // Default is false
 	         DocumentBuilder b = f.newDocumentBuilder();
