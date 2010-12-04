@@ -11,8 +11,8 @@ import org.json.JSONException;
  */
 @SuppressWarnings("unused")
 public class Docbookv {
-	static public String VERSION = "0.4.0";
-	static public String VERSION_DESCRIPTION = "in pom.xml maven-compiler-plugin update so that JDK6 is in use instead of 1.3 and jar-dependencies are really in use";
+	static public String VERSION = "0.4.1";
+	static public String VERSION_DESCRIPTION = "0.5 will be: Validation of manual.xml against dtd";
 
 	public static void main(String[] args){
 		Controller userInfo = new Controller(args, false);

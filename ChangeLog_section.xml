@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>ChangeLog</title>
+
+  <para>DocBook validation for PHP as console-tool, Validation-result in
+  JSON-format.</para>
+
+  <section>
+    <title>Version 0.5</title>
+
+    <para><date>2010-12-04</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>bugfix</glossterm> Corrected the date in this
+        ChangeLog. Errors like this can also happen in XMLMind, not just in
+        OpenOffice:
+        <code>&lt;para&gt;&lt;date&gt;2010-12-0&lt;/date&gt;4&lt;/para&gt;</code></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Version 0.4</title>
+
+    <para><date>2010-12-04</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>feature</glossterm> in pom.xml maven-compiler-plugin
+        update so that JDK6 is in use instead of 1.3 and jar-dependencies are
+        really in use</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Version 0.3</title>
+
+    <para><date>2010-12-03</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>feature</glossterm> Result in JSON-format with
+        parameter --json, dokumentation refactoring and extended for
+        parameters help und --json</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Version 0.2</title>
+
+    <para><date>2010-12-03</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>feature</glossterm> Filename as parameter and
+        optional the type against it shall be validated</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Version 0.1</title>
+
+    <para><date>2010-12-03</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>feature</glossterm> project as maven-package with
+        docbookv.sh</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
