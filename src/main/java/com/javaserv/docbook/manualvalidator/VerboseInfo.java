@@ -51,6 +51,7 @@ public class VerboseInfo {
 			case HEADER: {
 				System.out.println("DocBook validator " + Docbookv.VERSION);
 				System.out.println("("+'"' + Docbookv.VERSION_DESCRIPTION + '"'+")");
+				System.out.println("Contact (feature-requests, bug-reports): Daniel Bruessler <mail@danielbruessler.de>");
 				System.out.println("verbose-mode");
 				break;
 			}
