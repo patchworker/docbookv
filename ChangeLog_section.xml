@@ -23,6 +23,11 @@
         OpenOffice:
         <code>&lt;para&gt;&lt;date&gt;2010-12-0&lt;/date&gt;4&lt;/para&gt;</code></para>
       </listitem>
+
+      <listitem>
+        <para><glossterm>feature</glossterm> Validation of manual.xml against
+        DTD</para>
+      </listitem>
     </itemizedlist>
   </section>
 

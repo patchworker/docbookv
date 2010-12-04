@@ -14,17 +14,25 @@ public class Controller {
 	public Controller(String[] args, boolean isJsonMode) {
 		JobData jobData = parseArguments(args);
 		
-		if (isJsonMode || !jobData.isJsonMode()) {
-			VerboseInfo printInfo = new VerboseInfo(jobData);
+		if (isJsonMode || jobData.isJsonMode()) {
+			JsonResponse renderer = new JsonResponse();
+			String output = renderer.render(jobData);
+			if(output != null && output.length() > 0) {
+				System.out.print(output);
+				return;
+			}
+			System.out.println("{'ERROR':'the JSON library is not available'}");
 			return;
 		}
-		JsonResponse renderer = new JsonResponse();
-		String output = renderer.render(jobData);
-		if(output != null && output.length() > 0) {
-			System.out.print(output);
-			return;
+		
+		VerboseInfo printInfo = new VerboseInfo(jobData);
+		if(jobData.getError() == 0) {
+			DtdValidator validator = new DtdValidator();
+			String result = validator.validate(jobData.getManualFilename());
+			System.out.println(" ");
+			System.out.println(result);
 		}
-		System.out.println("{'ERROR':'the JSON library is not available'}");
+
 	}
 	
 	public JobData parseArguments(String[] args) {

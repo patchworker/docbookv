@@ -11,7 +11,7 @@ import org.json.JSONException;
  */
 @SuppressWarnings("unused")
 public class Docbookv {
-	static public String VERSION = "0.4.1";
+	static public String VERSION = "0.4.4";
 	static public String VERSION_DESCRIPTION = "0.5 will be: Validation of manual.xml against dtd";
 
 	public static void main(String[] args){

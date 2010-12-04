@@ -19,25 +19,54 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 @SuppressWarnings("unused")
 public class DtdErrorHandler implements ErrorHandler {
+	static public final String LF = " +++ ";
 	
-	public void warning(SAXParseException e) throws SAXException {
-        System.out.println("[Warning] "); 
-        printInfo(e);
-     }
-     public void error(SAXParseException e) throws SAXException {
-        System.out.println("[Error]"); 
-        printInfo(e);
-     }
-     public void fatalError(SAXParseException e) throws SAXException {
-        System.out.println("Fattal error: "); 
-        printInfo(e);
-     }
-     private void printInfo(SAXParseException e) {
-     	 System.out.println("   Public ID: "+e.getPublicId());
-     	 System.out.println("   System ID: "+e.getSystemId());
-     	 System.out.println("   Line number: "+e.getLineNumber());
-     	 System.out.println("   Column number: "+e.getColumnNumber());
-     	 System.out.println("   Message: "+e.getMessage());
-     }
+	public DtdErrorHandler(){
+	}
+
+	public void warning(SAXParseException ex) throws SAXException {
+		System.out.println ("[Warning]"
+				+ getDetails(ex));
+	}
+
+	public void error(SAXParseException ex) throws SAXException {
+		System.out.println("[Error]"
+				+ getDetails(ex));
+	}
+
+	public void fatalError(SAXParseException ex) throws SAXException {
+		System.out.println("[FatalError]"
+				+ getDetails(ex));
+	}
+
+	private String getDetails(SAXParseException ex) {
+		StringBuffer content = new StringBuffer();
+		content.append("Line number=");
+		content.append(ex.getLineNumber());
+		content.append(LF);
+
+		content.append("Column number=");
+		content.append(ex.getColumnNumber());
+		content.append(LF);
+
+		content.append("Message=");
+		content.append(ex.getMessage());
+		content.append(LF);
+
+		content.append("Localized Message=");
+		content.append(ex.getLocalizedMessage());
+		content.append(LF);
+		
+		content.append("Public ID=");
+		content.append(ex.getPublicId());
+		content.append(LF);
+
+		content.append("System ID=");
+		content.append(ex.getSystemId());
+		content.append(LF);
+
+		return content.toString();
+
+	}
 
 }
