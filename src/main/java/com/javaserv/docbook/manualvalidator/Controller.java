@@ -1,11 +1,14 @@
 package com.javaserv.docbook.manualvalidator;
 
+import org.json.JSONException;
+
 /**
  * This can be called from the console (Docbookv.java main), a Swing app or by a webservice)
  * 
  * @author Daniel Bruessler <mail@danielbruessler.de>
  * @since 0.3.0
  */
+@SuppressWarnings("unused")
 public class Controller {
 
 	public Controller(String[] args, boolean isJsonMode) {

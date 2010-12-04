@@ -1,6 +1,7 @@
 package com.javaserv.docbook.manualvalidator;
 
-import org.json.*;
+import org.json.JSONStringer;
+import org.json.JSONException;
 
 /**
  * Encapsulates the output of JSON data
@@ -14,9 +15,10 @@ public class JsonResponse {
 
 	static public final String LF = " +++ "; 
 	
-	private JSONStringer content;
+	private JSONStringer content = null;
 
 	public JsonResponse() {
+		System.out.println("ok");
 	}
 	
 	public String render(JobData jobData) {
@@ -69,10 +71,10 @@ public class JsonResponse {
 				break;
 			}
 			case FILES_INFO: {
-				String debugInfo = "DocBook manual"
+				String debugInfo = "DocBook manual="
 					  + jobData.getManualFilename();
 				if (jobData.getValidateType().length() > 0) {
-					debugInfo += LF + "Validate type:  " + jobData.getValidateType();
+					debugInfo += LF + "Validate type=" + jobData.getValidateType();
 				}
 				content.key("debug-info").value(debugInfo);
 				break;
