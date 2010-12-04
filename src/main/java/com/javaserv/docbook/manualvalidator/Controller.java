@@ -17,12 +17,8 @@ public class Controller {
 
 		if (jobData.getError() == 0) {
 			DtdValidator validator = new DtdValidator();
-			String validationResult = validator.validate(jobData
-					.getManualFilename());
-			if (!"OK".equals(validationResult)) {
-				jobData.setError(JobData.VALIDATION_ERROR);
-				jobData.setErrorMessage(validationResult);
-			}
+			boolean isValid = validator.validate(jobData.getManualFilename(),
+												 jobData);
 		}
 
 		if (isJsonMode || jobData.isJsonMode()) {

@@ -11,7 +11,6 @@ import org.json.JSONException;
 public class JsonResponse {
 	static public final int HEADER = 200;
 	static public final int FILES_INFO = 210;
-	static public final int MISSING_JOB_DATA = 220;
 
 	static public final String LF = " +++ "; 
 	
@@ -27,11 +26,15 @@ public class JsonResponse {
 			
 			add(HEADER, jobData);
 			if(jobData == null) {
+				jobData = new JobData();
+				jobData.setError(JobData.MISSING_JOB_DATA);
+				add(JobData.VALID_STATUS, jobData);
 				content.endObject();
 				return content.toString();
 			}
 			if(jobData.getError() == 0) {
-				add(FILES_INFO, jobData);
+				add(JobData.VALID_STATUS, jobData);
+				add(FILES_INFO, jobData); // as debug-info
 				content.endObject();
 				return content.toString();
 			}
@@ -40,8 +43,11 @@ public class JsonResponse {
 				content.endObject();
 				return content.toString();
 			}
+			add(JobData.VALID_STATUS, jobData);
 			add(jobData.getError(), jobData);
-			add(JobData.HELP, jobData);
+			if(jobData.getError() != JobData.VALIDATION_ERROR) {
+				add(JobData.HELP, jobData);
+			}
 			
 			content.endObject();
 			return content.toString();
@@ -78,12 +84,20 @@ public class JsonResponse {
 				content.key("debug-info").value(debugInfo);
 				break;
 			}
-			case MISSING_JOB_DATA: {
+			case JobData.MISSING_JOB_DATA: {
 				content.key("ERROR").value("VerboseInfo needs jobData");
 				break;
 			}
 			case JobData.VALIDATION_ERROR: {
 				content.key("ERROR").value(jobData.getErrorMessage());
+				break;
+			}
+			case JobData.VALID_STATUS: {
+				if(jobData.getError() == 0) {
+					content.key("valid").value(true);
+					return;
+				}
+				content.key("valid").value(false);
 				break;
 			}
 			case JobData.HELP:

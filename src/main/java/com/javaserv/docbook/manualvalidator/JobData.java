@@ -10,6 +10,8 @@ public class JobData {
 	static public final int NO_ARGUMENTS = 20;
 	static public final int NO_FILENAME = 30;
 	static public final int VALIDATION_ERROR = 100;
+	static public final int MISSING_JOB_DATA = 220;
+	static public final int VALID_STATUS = 300;
 
 	String command = "";
 	String manualFilename = "";

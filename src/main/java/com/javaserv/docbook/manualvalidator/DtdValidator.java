@@ -20,9 +20,15 @@ import org.xml.sax.helpers.DefaultHandler;
 @SuppressWarnings("unused")
 public class DtdValidator {
 
-	public String validate(String xmlFileName) {
+	public boolean validate(String xmlFileName, JobData jobData) {
+		if(jobData == null) {
+			jobData = new JobData();
+			jobData.setError(JobData.MISSING_JOB_DATA);
+			return false;
+		}
 		if (xmlFileName == null || xmlFileName.length() == 0) {
-			return ("ERROR: missing the XML file");
+			jobData.setError(JobData.VALIDATION_ERROR);
+			jobData.setErrorMessage("ERROR: missing the XML file");
 		}
 		boolean isValid = true;
 		String errors = "";
@@ -46,11 +52,13 @@ public class DtdValidator {
 			isValid = false;
 			errors += "[Fatal Error] Filesystem problem, the file is not accessable. " + ex.toString();
 		}
-		
-		if (!isValid || !DtdErrorHandler.isValid) {
-			return ("\r\n" + errors + DtdErrorHandler.getErrors() + "\r\n" + "The manual is NOT valid.");
+		if(!isValid || !DtdErrorHandler.isValid) {
+			jobData.setError(JobData.VALIDATION_ERROR);
+			jobData.setErrorMessage(errors + DtdErrorHandler.getErrors());
+			return false;
 		}
-		return ("OK");
+		
+		return true;
 
 	}
 }

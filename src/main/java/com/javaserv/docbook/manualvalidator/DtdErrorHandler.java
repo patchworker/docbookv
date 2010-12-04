@@ -44,20 +44,20 @@ public class DtdErrorHandler implements ErrorHandler {
 
 	public void warning(SAXParseException ex) throws SAXException {
 		setValid(false);
-		System.out.println ("[Warning]"
-				+ getDetails(ex));
+		errors += "[Warning]"
+				+ getDetails(ex);
 	}
 
 	public void error(SAXParseException ex) throws SAXException {
 		setValid(false);
-		System.out.println("[Error]"
-				+ getDetails(ex));
+		errors += "[Error]"
+				+ getDetails(ex);
 	}
 
 	public void fatalError(SAXParseException ex) throws SAXException {
 		setValid(false);
-		System.out.println("[FatalError]"
-				+ getDetails(ex));
+		errors += "[FatalError]"
+				+ getDetails(ex);
 	}
 
 	protected String getDetails(SAXParseException ex) {

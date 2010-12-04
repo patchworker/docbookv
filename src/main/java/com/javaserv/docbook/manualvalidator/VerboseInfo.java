@@ -9,7 +9,6 @@ public class VerboseInfo {
 	
 	static public final int HEADER = 200;
 	static public final int FILES_INFO = 210;
-	static public final int MISSING_JOB_DATA = 220;
 	
 	public VerboseInfo() {
 	}
@@ -17,10 +16,13 @@ public class VerboseInfo {
 	public void render(JobData jobData) {
 		printHelpText(HEADER, jobData);
 		if(jobData == null) {
-			printHelpText(MISSING_JOB_DATA, null);
+			jobData = new JobData();
+			jobData.setError(JobData.MISSING_JOB_DATA);
+			printHelpText(JobData.MISSING_JOB_DATA, null);
 			return;
 		}
 		if(jobData.getError() == 0) {
+			printHelpText(JobData.VALID_STATUS, jobData);
 			printHelpText(FILES_INFO, jobData);
 			return;
 		}
@@ -28,8 +30,12 @@ public class VerboseInfo {
 			printHelpText(JobData.HELP, jobData);
 			return;
 		}
+		System.out.println(" ");
+		printHelpText(JobData.VALID_STATUS, jobData);
 		printHelpText(jobData.getError(), jobData);
-		printHelpText(JobData.HELP, jobData);
+		if(jobData.getError() != JobData.VALIDATION_ERROR) {
+			printHelpText(JobData.HELP, jobData);
+		}
 		
 	}
 
@@ -68,12 +74,20 @@ public class VerboseInfo {
 				}
 				break;
 			}
-			case MISSING_JOB_DATA: {
+			case JobData.MISSING_JOB_DATA: {
 				System.out.println("ERROR: VerboseInfo needs jobData");
 				break;
 			}
 			case JobData.VALIDATION_ERROR: {
 				System.out.println(jobData.getErrorMessage());
+				break;
+			}
+			case JobData.VALID_STATUS: {
+				if(jobData.getError() == 0) {
+					System.out.println("OK, the manual is valid!");
+					return;
+				}
+				System.out.println("FAILED. The manual contains errors (or there are warnings).");
 				break;
 			}
 			case JobData.HELP:

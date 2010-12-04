@@ -18,6 +18,11 @@
 
     <itemizedlist>
       <listitem>
+        <para><glossterm>feature</glossterm> ChangeLog as DocBook 5.0
+        "section"</para>
+      </listitem>
+
+      <listitem>
         <para><glossterm>bugfix</glossterm> Corrected the date in this
         ChangeLog. Errors like this can also happen in XMLMind, not just in
         OpenOffice:
@@ -25,8 +30,12 @@
       </listitem>
 
       <listitem>
-        <para><glossterm>feature</glossterm> Validation of manual.xml against
-        DTD</para>
+        <para><glossterm>feature</glossterm> Validation of XML-manuals against
+        dtd, what is declared as DOCTYPE in the file</para>
+      </listitem>
+
+      <listitem>
+        <para><glossterm>feature</glossterm> valid state (true/ false)</para>
       </listitem>
     </itemizedlist>
   </section>
