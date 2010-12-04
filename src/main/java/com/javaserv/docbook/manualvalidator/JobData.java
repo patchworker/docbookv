@@ -17,6 +17,8 @@ public class JobData {
 	String manualFilename = "";
 	String validateType = "analyse";
 	boolean jsonMode = false;
+	int timerStart = 0;
+	String statistics = "";
 	int error = 0;
 	String errorMessage = "";
 	
@@ -43,6 +45,18 @@ public class JobData {
 	}
 	public void setJsonMode(boolean jsonMode) {
 		this.jsonMode = jsonMode;
+	}
+	public int getTimerStart() {
+		return timerStart;
+	}
+	public void setTimerStart(int timerStart) {
+		this.timerStart = timerStart;
+	}
+	public String getStatistics() {
+		return statistics;
+	}
+	public void setStatistics(String statistics) {
+		this.statistics = statistics;
 	}
 	public int getError() {
 		return error;

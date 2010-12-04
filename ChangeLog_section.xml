@@ -35,7 +35,13 @@
       </listitem>
 
       <listitem>
-        <para><glossterm>feature</glossterm> valid state (true/ false)</para>
+        <para><glossterm>feature</glossterm> "valid" state for every output
+        (true/ false)</para>
+      </listitem>
+
+      <listitem>
+        <para><glossterm>feature</glossterm> "stat" statistics-section for
+        timing-info in seconds, parser-name, file size</para>
       </listitem>
     </itemizedlist>
   </section>

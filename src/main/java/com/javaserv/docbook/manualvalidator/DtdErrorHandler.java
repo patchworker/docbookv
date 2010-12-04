@@ -73,16 +73,12 @@ public class DtdErrorHandler implements ErrorHandler {
 		content.append("Message=");
 		content.append(ex.getMessage());
 		content.append(LF);
-
-		content.append("Localized Message=");
-		content.append(ex.getLocalizedMessage());
-		content.append(LF);
 		
 		content.append("Public ID=");
 		content.append(ex.getPublicId());
 		content.append(LF);
 
-		content.append("System ID=");
+		content.append("Filename=");
 		content.append(ex.getSystemId());
 		content.append(LF);
 

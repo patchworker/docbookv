@@ -1,5 +1,7 @@
 package com.javaserv.docbook.manualvalidator;
 
+import java.util.Calendar;
+
 import org.json.JSONException;
 
 /**
@@ -39,6 +41,7 @@ public class Controller {
 
 	public JobData parseArguments(String[] args) {
 		JobData jobData = new JobData();
+		jobData.setTimerStart(Calendar.getInstance().getTimeInMillis());
 
 		// command e.g "docbookv.sh"
 		int pointer = 0;
