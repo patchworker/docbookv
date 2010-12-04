@@ -26,14 +26,13 @@ public class DtdValidator {
 		}
 		boolean isValid = false;
 		try {
-			File x = new File(xmlFileName);
-			DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
-			f.setValidating(true); // Default is false
-			DocumentBuilder b = f.newDocumentBuilder();
-			// ErrorHandler h = new DefaultHandler();
-			ErrorHandler h = new DtdErrorHandler();
-			b.setErrorHandler(h);
-			Document d = b.parse(x);
+			File xmlFile = new File(xmlFileName);
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setValidating(true);
+			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+			ErrorHandler errorHandler = new DtdErrorHandler();
+			documentBuilder.setErrorHandler(errorHandler);
+			Document dTdDocument = documentBuilder.parse(xmlFile);
 			isValid = true;
 		} catch (ParserConfigurationException e) {
 			System.out.println(e.toString());
