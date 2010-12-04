@@ -24,28 +24,33 @@ public class DtdValidator {
 		if (xmlFileName == null || xmlFileName.length() == 0) {
 			return ("ERROR: missing the XML file");
 		}
-		boolean isValid = false;
+		boolean isValid = true;
+		String errors = "";
 		try {
 			File xmlFile = new File(xmlFileName);
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(true);
 			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 			ErrorHandler errorHandler = new DtdErrorHandler();
+			DtdErrorHandler.setValid(true);
+			DtdErrorHandler.setErrors("");
 			documentBuilder.setErrorHandler(errorHandler);
 			Document dTdDocument = documentBuilder.parse(xmlFile);
-			isValid = true;
-		} catch (ParserConfigurationException e) {
-			System.out.println(e.toString());
-		} catch (SAXException e) {
-			System.out.println(e.toString());
-		} catch (IOException e) {
-			System.out.println(e.toString());
+		} catch (ParserConfigurationException ex) {
+			isValid = false;
+			errors += "[Fatal Error] ParserConfiguration not correct. " + ex.toString();
+		} catch (SAXException ex) {
+			isValid = false;
+			errors += "[Fatal Error] The SAX-parser cannot parse the document. " + ex.toString();
+		} catch (IOException ex) {
+			isValid = false;
+			errors += "[Fatal Error] Filesystem problem, the file is not accessable. " + ex.toString();
 		}
 		
-		if (!isValid) {
-			return ("The manual is NOT valid.");
+		if (!isValid || !DtdErrorHandler.isValid) {
+			return ("\r\n" + errors + DtdErrorHandler.getErrors() + "\r\n" + "The manual is NOT valid.");
 		}
-		return ("OK, no error!");
+		return ("OK");
 
 	}
 }

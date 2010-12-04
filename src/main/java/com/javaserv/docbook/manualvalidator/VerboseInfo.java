@@ -6,11 +6,15 @@ package com.javaserv.docbook.manualvalidator;
  * @since 0.2.0
  */
 public class VerboseInfo {
+	
 	static public final int HEADER = 200;
 	static public final int FILES_INFO = 210;
 	static public final int MISSING_JOB_DATA = 220;
 	
-	public VerboseInfo(JobData jobData) {
+	public VerboseInfo() {
+	}
+	
+	public void render(JobData jobData) {
 		printHelpText(HEADER, jobData);
 		if(jobData == null) {
 			printHelpText(MISSING_JOB_DATA, null);
@@ -66,6 +70,10 @@ public class VerboseInfo {
 			}
 			case MISSING_JOB_DATA: {
 				System.out.println("ERROR: VerboseInfo needs jobData");
+				break;
+			}
+			case JobData.VALIDATION_ERROR: {
+				System.out.println(jobData.getErrorMessage());
 				break;
 			}
 			case JobData.HELP:

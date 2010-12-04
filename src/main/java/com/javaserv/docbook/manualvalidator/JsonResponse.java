@@ -18,7 +18,6 @@ public class JsonResponse {
 	private JSONStringer content = null;
 
 	public JsonResponse() {
-		System.out.println("ok");
 	}
 	
 	public String render(JobData jobData) {
@@ -81,6 +80,10 @@ public class JsonResponse {
 			}
 			case MISSING_JOB_DATA: {
 				content.key("ERROR").value("VerboseInfo needs jobData");
+				break;
+			}
+			case JobData.VALIDATION_ERROR: {
+				content.key("ERROR").value(jobData.getErrorMessage());
 				break;
 			}
 			case JobData.HELP:

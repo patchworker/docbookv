@@ -20,26 +20,47 @@ import org.xml.sax.helpers.DefaultHandler;
 @SuppressWarnings("unused")
 public class DtdErrorHandler implements ErrorHandler {
 	static public final String LF = " +++ ";
+	static protected boolean isValid = false;
+	static protected String errors = "";
 	
 	public DtdErrorHandler(){
 	}
 
+	protected static boolean isValid() {
+		return isValid;
+	}
+
+	protected static void setValid(boolean isValid) {
+		DtdErrorHandler.isValid = isValid;
+	}
+
+	protected static String getErrors() {
+		return errors;
+	}
+
+	protected static void setErrors(String errors) {
+		DtdErrorHandler.errors = errors;
+	}
+
 	public void warning(SAXParseException ex) throws SAXException {
+		setValid(false);
 		System.out.println ("[Warning]"
 				+ getDetails(ex));
 	}
 
 	public void error(SAXParseException ex) throws SAXException {
+		setValid(false);
 		System.out.println("[Error]"
 				+ getDetails(ex));
 	}
 
 	public void fatalError(SAXParseException ex) throws SAXException {
+		setValid(false);
 		System.out.println("[FatalError]"
 				+ getDetails(ex));
 	}
 
-	private String getDetails(SAXParseException ex) {
+	protected String getDetails(SAXParseException ex) {
 		StringBuffer content = new StringBuffer();
 		content.append("Line number=");
 		content.append(ex.getLineNumber());
