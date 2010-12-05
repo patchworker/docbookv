@@ -96,7 +96,7 @@ public class VerboseInfo {
 				break;
 			}
 			case JobData.STATISTICS_INFO: {
-				System.out.println(jobData.getStatistics());
+				System.out.println("(statistcs: " + jobData.getStatistics() + ")");
 				break;
 			}
 			case JobData.HELP:
