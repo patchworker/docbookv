@@ -12,12 +12,13 @@ public class JobData {
 	static public final int VALIDATION_ERROR = 100;
 	static public final int MISSING_JOB_DATA = 220;
 	static public final int VALID_STATUS = 300;
+	static public final int STATISTICS_INFO = 310;
 
 	String command = "";
 	String manualFilename = "";
 	String validateType = "analyse";
 	boolean jsonMode = false;
-	int timerStart = 0;
+	long timeMillisStart = 0;
 	String statistics = "";
 	int error = 0;
 	String errorMessage = "";
@@ -46,17 +47,25 @@ public class JobData {
 	public void setJsonMode(boolean jsonMode) {
 		this.jsonMode = jsonMode;
 	}
-	public int getTimerStart() {
-		return timerStart;
+	public long getTimeMillisStart() {
+		return timeMillisStart;
 	}
-	public void setTimerStart(int timerStart) {
-		this.timerStart = timerStart;
+	public void setTimeMillisStart(long timeMillisStart) {
+		this.timeMillisStart = timeMillisStart;
 	}
 	public String getStatistics() {
 		return statistics;
 	}
 	public void setStatistics(String statistics) {
 		this.statistics = statistics;
+	}
+	public void addStatistics(String statistics) {
+		if(this.statistics.length() > 0) this.statistics += "  ";
+		this.statistics += statistics;
+	}
+	public void addStatisticsRounded(float number, int precision, String text) {
+		if(this.statistics.length() > 0) this.statistics += "  ";
+		this.statistics += String.format("%." + precision + "f", number) + text;
 	}
 	public int getError() {
 		return error;

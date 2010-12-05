@@ -1,5 +1,7 @@
 package com.javaserv.docbook.manualvalidator;
 
+import java.util.Calendar;
+
 import org.json.JSONStringer;
 import org.json.JSONException;
 
@@ -27,6 +29,7 @@ public class JsonResponse {
 			add(HEADER, jobData);
 			if(jobData == null) {
 				jobData = new JobData();
+				jobData.setTimeMillisStart(Calendar.getInstance().getTimeInMillis());
 				jobData.setError(JobData.MISSING_JOB_DATA);
 				add(JobData.VALID_STATUS, jobData);
 				content.endObject();
@@ -34,7 +37,7 @@ public class JsonResponse {
 			}
 			if(jobData.getError() == 0) {
 				add(JobData.VALID_STATUS, jobData);
-				add(FILES_INFO, jobData); // as debug-info
+				add(JobData.STATISTICS_INFO, jobData);
 				content.endObject();
 				return content.toString();
 			}
@@ -44,6 +47,7 @@ public class JsonResponse {
 				return content.toString();
 			}
 			add(JobData.VALID_STATUS, jobData);
+			add(JobData.STATISTICS_INFO, jobData);
 			add(jobData.getError(), jobData);
 			if(jobData.getError() != JobData.VALIDATION_ERROR) {
 				add(JobData.HELP, jobData);
@@ -98,6 +102,10 @@ public class JsonResponse {
 					return;
 				}
 				content.key("valid").value(false);
+				break;
+			}
+			case JobData.STATISTICS_INFO: {
+				content.key("stat").value(jobData.getStatistics());
 				break;
 			}
 			case JobData.HELP:

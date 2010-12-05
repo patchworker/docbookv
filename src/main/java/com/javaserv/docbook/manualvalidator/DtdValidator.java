@@ -30,10 +30,12 @@ public class DtdValidator {
 			jobData.setError(JobData.VALIDATION_ERROR);
 			jobData.setErrorMessage("ERROR: missing the XML file");
 		}
+		jobData.addStatistics("default-SAX/Java"+System.getProperty("java.version"));
 		boolean isValid = true;
 		String errors = "";
 		try {
 			File xmlFile = new File(xmlFileName);
+			jobData.addStatisticsRounded(xmlFile.length() / 1000, 1, "kB");
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(true);
 			DocumentBuilder documentBuilder = factory.newDocumentBuilder();

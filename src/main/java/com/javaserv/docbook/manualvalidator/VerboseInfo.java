@@ -1,5 +1,7 @@
 package com.javaserv.docbook.manualvalidator;
 
+import java.util.Calendar;
+
 /**
  * DocBook versions: http://www.oasis-open.org/docbook/xml/
  * @author Daniel Bruessler <mail@danielbruessler.de>
@@ -17,13 +19,14 @@ public class VerboseInfo {
 		printHelpText(HEADER, jobData);
 		if(jobData == null) {
 			jobData = new JobData();
+			jobData.setTimeMillisStart(Calendar.getInstance().getTimeInMillis());
 			jobData.setError(JobData.MISSING_JOB_DATA);
 			printHelpText(JobData.MISSING_JOB_DATA, null);
 			return;
 		}
 		if(jobData.getError() == 0) {
 			printHelpText(JobData.VALID_STATUS, jobData);
-			printHelpText(FILES_INFO, jobData);
+			printHelpText(JobData.STATISTICS_INFO, jobData);
 			return;
 		}
 		else if(jobData.getError() == JobData.HELP) {
@@ -32,6 +35,7 @@ public class VerboseInfo {
 		}
 		System.out.println(" ");
 		printHelpText(JobData.VALID_STATUS, jobData);
+		printHelpText(JobData.STATISTICS_INFO, jobData);
 		printHelpText(jobData.getError(), jobData);
 		if(jobData.getError() != JobData.VALIDATION_ERROR) {
 			printHelpText(JobData.HELP, jobData);
@@ -89,6 +93,10 @@ public class VerboseInfo {
 					return;
 				}
 				System.out.println("FAILED. The manual contains errors (or there are warnings).");
+				break;
+			}
+			case JobData.STATISTICS_INFO: {
+				System.out.println(jobData.getStatistics());
 				break;
 			}
 			case JobData.HELP:

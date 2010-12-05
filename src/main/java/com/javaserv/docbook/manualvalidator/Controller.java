@@ -22,7 +22,10 @@ public class Controller {
 			boolean isValid = validator.validate(jobData.getManualFilename(),
 												 jobData);
 		}
-
+		
+		long timeInMillis = Calendar.getInstance().getTimeInMillis() - jobData.getTimeMillisStart();
+		jobData.addStatisticsRounded(1f * timeInMillis / 1000, 1, "sec");
+		
 		if (isJsonMode || jobData.isJsonMode()) {
 			JsonResponse renderer = new JsonResponse();
 			String output = renderer.render(jobData);
@@ -41,7 +44,7 @@ public class Controller {
 
 	public JobData parseArguments(String[] args) {
 		JobData jobData = new JobData();
-		jobData.setTimerStart(Calendar.getInstance().getTimeInMillis());
+		jobData.setTimeMillisStart(Calendar.getInstance().getTimeInMillis());
 
 		// command e.g "docbookv.sh"
 		int pointer = 0;
