@@ -7,8 +7,7 @@ online editor for docbook files. "YGWYM" means "You get what you mean".
 Why Java for PHP
 ----------------
 
-The build-in validator of PHP 5.x doesn't tell in which line an error occurs. The validators of Java give very detailed 
-information about errors.
+The build-in validator of PHP 5.x doesn't tell in which line an error occurs. The validators of Java give very detailed information about errors.
 
 What can it valide, what is planned
 -----------------------------------
