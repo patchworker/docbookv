@@ -127,7 +127,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.javaserv.docbook.manualvalidator.Docbookv</mainClass>
+							<mainClass>com.javaserv.docbook.valid.Docbookv</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
