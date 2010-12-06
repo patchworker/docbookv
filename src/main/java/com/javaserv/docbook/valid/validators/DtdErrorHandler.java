@@ -1,4 +1,4 @@
-package com.javaserv.docbook.manualvalidator;
+package com.javaserv.docbook.valid.validators;
 
 import java.io.File;
 import java.io.IOException;

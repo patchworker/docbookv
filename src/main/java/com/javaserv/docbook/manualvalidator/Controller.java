@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import org.json.JSONException;
 
+import com.javaserv.docbook.valid.validators.DtdValidator;
+
 /**
  * This can be called from the console (Docbookv.java main), a Swing app or by a
  * webservice)

@@ -1,4 +1,4 @@
-package com.javaserv.docbook.manualvalidator;
+package com.javaserv.docbook.valid.validators;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.helpers.DefaultHandler;
+
+import com.javaserv.docbook.manualvalidator.JobData;
 
 /**
  * This validates the XML against the DTD on top of the XML-file
