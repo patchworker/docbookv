@@ -19,7 +19,8 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 @SuppressWarnings("unused")
 public class DtdErrorHandler implements ErrorHandler {
-	static public final String LF = " +++ ";
+	static public final String LF = "\r\n";
+	static public final String SEPARATOR = " +++ ";
 	static protected boolean isValid = false;
 	static protected String errors = "";
 	
@@ -64,23 +65,24 @@ public class DtdErrorHandler implements ErrorHandler {
 		StringBuffer content = new StringBuffer();
 		content.append("Line number=");
 		content.append(ex.getLineNumber());
-		content.append(LF);
+		content.append(SEPARATOR);
 
 		content.append("Column number=");
 		content.append(ex.getColumnNumber());
-		content.append(LF);
+		content.append(SEPARATOR);
 
 		content.append("Message=");
 		content.append(ex.getMessage());
-		content.append(LF);
+		content.append(SEPARATOR);
 		
 		content.append("Public ID=");
 		content.append(ex.getPublicId());
-		content.append(LF);
+		content.append(SEPARATOR);
 
 		content.append("Filename=");
 		content.append(ex.getSystemId());
-		content.append(LF);
+		
+		content.append(LF + LF);
 
 		return content.toString();
 

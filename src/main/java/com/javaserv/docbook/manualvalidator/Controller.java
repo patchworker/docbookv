@@ -25,6 +25,7 @@ public class Controller {
 		
 		long timeInMillis = Calendar.getInstance().getTimeInMillis() - jobData.getTimeMillisStart();
 		jobData.addStatisticsRounded(1f * timeInMillis / 1000, 1, "sec");
+		jobData.addStatistics("no speed-optimization");
 		
 		if (isJsonMode || jobData.isJsonMode()) {
 			JsonResponse renderer = new JsonResponse();

@@ -14,6 +14,9 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * This validates the XML against the DTD on top of the XML-file
  * 
+ * The internal xerces-implementation of Java6 is in use
+ * (e.g. org.apache.xerces.xni.parser, org.apache.xerces.parsers.DOMParser)
+ * 
  * @author Daniel Bruessler <mail@danielbruessler.de>
  * @since 0.5.0
  */
@@ -46,13 +49,13 @@ public class DtdValidator {
 			Document dTdDocument = documentBuilder.parse(xmlFile);
 		} catch (ParserConfigurationException ex) {
 			isValid = false;
-			errors += "[Fatal Error] ParserConfiguration not correct. " + ex.toString();
+			errors += "[Fatal Error] ParserConfiguration not correct. " + ex.toString() + DtdErrorHandler.LF + DtdErrorHandler.LF;
 		} catch (SAXException ex) {
 			isValid = false;
-			errors += "[Fatal Error] The SAX-parser cannot parse the document. " + ex.toString();
+			errors += "[Fatal Error] The SAX-parser cannot parse the document. " + ex.toString() + DtdErrorHandler.LF + DtdErrorHandler.LF;
 		} catch (IOException ex) {
 			isValid = false;
-			errors += "[Fatal Error] Filesystem problem, the file is not accessable. " + ex.toString();
+			errors += "[Fatal Error] Filesystem problem, the file is not accessable. " + ex.toString() + DtdErrorHandler.LF + DtdErrorHandler.LF;
 		}
 		if(!isValid || !DtdErrorHandler.isValid) {
 			jobData.setError(JobData.VALIDATION_ERROR);

@@ -14,6 +14,15 @@
   <section>
     <title>Version 0.5</title>
 
+    <para><date>2010-12-05</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>regression-test</glossterm> Fine with ?? OS (thanks
+        to Fabien Udriot)</para>
+      </listitem>
+    </itemizedlist>
+
     <para><date>2010-12-04</date></para>
 
     <itemizedlist>
@@ -42,6 +51,11 @@
       <listitem>
         <para><glossterm>feature</glossterm> "stat" statistics-section for
         timing-info in seconds, parser-name, file size</para>
+      </listitem>
+
+      <listitem>
+        <para><glossterm>regression-test</glossterm> Fine with Linux Ubuntu
+        8.04 LTS</para>
       </listitem>
     </itemizedlist>
   </section>
