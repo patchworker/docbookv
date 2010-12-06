@@ -1,8 +1,8 @@
-docbookv -- DocBook Validator 0.5.5
+docbookv -- DocBook Validator 0.6.0
 ===================================
 
 The aim of this tool is to provide detailed information of docbook-validation-errors. The tool will be used in a PHP 
-online editor for docbook files, for that reason it has a mode to use JSON format. "YGWYM" means "You get what you mean".
+online editor for docbook files, for that reason it has a mode to use JSON format.
 
 Why Java for PHP
 ----------------
@@ -30,4 +30,3 @@ Usage examples
         /usr/bin/docbookv.sh manual.xml
 
         /usr/bin/docbookv.sh --json manual.xml
-
