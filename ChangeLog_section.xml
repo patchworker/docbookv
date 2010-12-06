@@ -12,6 +12,18 @@
   JSON-format.</para>
 
   <section>
+    <title>Version 0.6</title>
+
+    <para><date>2010-12-06</date></para>
+
+    <itemizedlist>
+      <listitem>
+        <para><glossterm>feature</glossterm> Refactoring for multiple validators</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
     <title>Version 0.5</title>
 
     <para><date>2010-12-05</date></para>
