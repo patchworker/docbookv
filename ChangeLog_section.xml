@@ -18,7 +18,7 @@
 
     <itemizedlist>
       <listitem>
-        <para><glossterm>regression-test</glossterm> Fine with ?? OS (thanks
+        <para><glossterm>regression-test</glossterm> Fine with Apple Mac OS X 1.6.5, Java HotSpot(TM)64bit 1.6.0_22 (thanks
         to Fabien Udriot)</para>
       </listitem>
     </itemizedlist>
@@ -55,7 +55,7 @@
 
       <listitem>
         <para><glossterm>regression-test</glossterm> Fine with Linux Ubuntu
-        8.04 LTS</para>
+        8.04 LTS, Java 32bit openjdk 1.6.0_20</para>
       </listitem>
     </itemizedlist>
   </section>
